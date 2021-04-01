@@ -1,7 +1,7 @@
 Aspect Detection NLP Toolkit
 =============
 
-Aspect Detection NLP toolkit is a Python package that performs various NLP tasks based on aspect detection and aspect based sentiment analysis.
+Aspect Detection NLP toolkit (https://pypi.org/project/aspectnlp/) is a Python package that performs various NLP tasks based on aspect detection and aspect based sentiment analysis.
 
 Installation
 -------------
