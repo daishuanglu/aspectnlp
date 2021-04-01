@@ -16,7 +16,7 @@ with open('README.md') as description_file:
 
 setup(
     name='aspectnlp',
-    version='0.0.1',
+    version='0.0.2',
     description="Aspect detection NLP toolkit is a Python package that perform NLP tasks based on aspect detection.",
     long_description=description,
     long_description_content_type='text/markdown',
@@ -29,7 +29,7 @@ setup(
     include_package_data=True,
     install_requires=requirements,
     zip_safe=False,
-    keywords='aspect',
+    keywords='aspectnlp',
     py_modules=['mydatasets','misc'],
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',

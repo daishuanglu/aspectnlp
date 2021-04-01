@@ -14,24 +14,29 @@ from fasttext import load_model
 # Project code
 import mydatasets as mydatasets
 # DNN configurations
-from aspect.config.config_custom import configuration as tbsa_config
-from aspect.config.config_customAS import configuration as absa_config
+from aspectnlp.config.config_custom import configuration as tbsa_config
+from aspectnlp.config.config_customAS import configuration as absa_config
 # word-to-vector functions
-from aspect.w2v import *
-from aspect.models import CNN_Gate_Aspect_Text
+from aspectnlp.w2v import *
+from aspectnlp.models import CNN_Gate_Aspect_Text
 
 class AspectSentimentScorer():
 
-    def __init__(self, absa='aspect',ftmodel=None):
-        import aspect
-        self.rmls_nlp_dir = os.path.dirname(aspect.__file__)
+    def __init__(self,ftmodel_path=None, absa='aspect'):
+        import aspectnlp
+        self.rmls_nlp_dir = os.path.dirname(aspectnlp.__file__)
         self.ontology = ['negative', 'neutral', 'positive']
         self.sia = SentimentIntensityAnalyzer()
         self.args_absa=None
+        ftmodel=None
+        try:
+            ftmodel = load_model(ftmodel_path)
+        except:
+            print(
+                "Embedding not found! please add your fasttext embedding OR \n  Download our custom model from https://drive.google.com/u/0/uc?export=download&confirm=HYUN&id=1mQPKHoa4SQr-skCO5XpzWpOxGB5z02-U")
+
         if absa=='aspect':
             print("Loading pre-trained aspect embedding...")
-            if ftmodel is None:
-                ftmodel = load_model(os.path.join(self.rmls_nlp_dir, "absa_embedding", "custom_emb.vec.bin"))
             self.args_absa=absa_config
             self.args_absa, _=self._absa_embedding(ftmodel)
             self.absa_predict, self.absa_model=self._absa_model()

@@ -4,7 +4,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 # project codes
-from aspect.w2v import *
+from aspectnlp.w2v import *
 
 def setEmbeddings(args,text_field,as_field):
     if args.embed_file == 'w2v':

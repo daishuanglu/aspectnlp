@@ -91,8 +91,8 @@ def find_phrase(word,keyphrases):
 class aspectDetector():
     def __init__(self,ftmodel_path=None,sent_len=200):
         self.max_sent_len = sent_len
-        import aspect
-        rmls_nlp_dir = os.path.dirname(aspect.__file__)
+        import aspectnlp
+        rmls_nlp_dir = os.path.dirname(aspectnlp.__file__)
         self.domain = "custom"
         self.domain_emb = self.domain+"_emb.vec"
         self.emb_dir = os.path.join(rmls_nlp_dir, "absa_embedding")

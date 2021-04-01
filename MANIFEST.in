@@ -3,6 +3,7 @@ include misc.py
 include mydatasets.py
 include LICSENCE
 
+include aspectnlp/*
 include aspectnlp/absa_model/custom
 include aspectnlp/absa_model/custom_info.pkl
 include aspectnlp/absa_prep/custom_emb.vec.npy
