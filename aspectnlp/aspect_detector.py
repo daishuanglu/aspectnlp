@@ -16,9 +16,9 @@ from nltk import pos_tag
 import nltk
 nltk.download('stopwords')
 from rake_nltk import Rake
-import urllib.request
-warnings.filterwarnings("ignore")
+from aspectnlp.utils import load_pretrained_embedding
 
+warnings.filterwarnings("ignore")
 
 
 def keep_alpha(s):
