@@ -10,7 +10,7 @@ As this package requires cpu-pytorch, please install with the find link argument
 ```
 pip install aspect-x.x.x-py3-none-any.whl -f https://download.pytorch.org/whl/torch_stable.html
 ```
-
+For nightly version please visit our github page: https://github.com/daishuanglu/aspectnlp
 
 Usage
 --------
@@ -33,7 +33,7 @@ corpus=[
 There are various places where it could prevent page-loading delays.",
     ]
 
-asp_detector=aspectDetector('custom_emb.vec.bin')
+asp_detector=aspectDetector()
 sent_asp=asp_detector.detect(corpus,disp=True)
 
 
@@ -44,7 +44,7 @@ topic_model.fit()
 top_words,topics,topic_ids=topic_model.get_top_words_and_topics(disp=True)
 
 # Aspect based on aspect words
-analyzer=AspectSentimentScorer('custom_emb.vec.bin')
+analyzer=AspectSentimentScorer()
 for sentId,sample in enumerate(sent_asp):
     content = list(analyzer.generateInputContent(sample))
     sentiment, scores = analyzer.scoreABSA(content)
@@ -57,7 +57,7 @@ for content in sent_asp:
 
 # aspect fuzzy matcher
 word_list=['menu','sales','account','User Interface','search','Note','telephony','portal','food']
-fastext= fasttext_emb('custom_emb.vec.bin')
+fastext= fasttext_emb()
 for i,v in enumerate(fastext.w2v(word_list)):
     print(word_list[i],':',v)
 ```

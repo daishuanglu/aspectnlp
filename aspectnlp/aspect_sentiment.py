@@ -19,21 +19,23 @@ from aspectnlp.config.config_customAS import configuration as absa_config
 # word-to-vector functions
 from aspectnlp.w2v import *
 from aspectnlp.models import CNN_Gate_Aspect_Text
+from aspectnlp.utils import load_pretrained_embedding
+
 
 class AspectSentimentScorer():
 
-    def __init__(self,ftmodel_path=None, absa='aspect'):
+    def __init__(self,ftmodel_path='', absa='aspect'):
         import aspectnlp
         self.rmls_nlp_dir = os.path.dirname(aspectnlp.__file__)
         self.ontology = ['negative', 'neutral', 'positive']
         self.sia = SentimentIntensityAnalyzer()
         self.args_absa=None
         ftmodel=None
-        try:
-            ftmodel = load_model(ftmodel_path)
-        except:
-            print(
-                "Embedding not found! please add your fasttext embedding OR \n  Download our custom model from https://drive.google.com/u/0/uc?export=download&confirm=HYUN&id=1mQPKHoa4SQr-skCO5XpzWpOxGB5z02-U")
+        if not ftmodel_path:
+            ftmodel = load_pretrained_embedding()
+        else:
+            ftmodel=load_model(ftmodel_path)
+        assert(ftmodel is None)
 
         if absa=='aspect':
             print("Loading pre-trained aspect embedding...")

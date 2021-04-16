@@ -5,7 +5,7 @@ import linecache
 import gensim
 import numpy as np
 from fasttext import load_model
-
+from utils import load_pretrained_embedding
 
 class fasttext_emb():
 
@@ -13,14 +13,7 @@ class fasttext_emb():
         if len(embedding_file)>0:
             self.ftmodel = load_model(embedding_file)
         else:
-            import aspect
-            data_dir = os.path.join(os.path.dirname(aspect.__file__), 'absa_embedding')
-            filename = os.path.join(data_dir, "custom_emb_vec.bin")
-            try:
-                self.ftmodel = load_model(filename)
-            except:
-                print("Embedding not found! please add your fasttext embedding OR \n "
-                      " Download our custom model from https://drive.google.com/u/0/uc?export=download&confirm=HYUN&id=1mQPKHoa4SQr-skCO5XpzWpOxGB5z02-U")
+            self.ftmodel = load_pretrained_embedding()
 
     def w2v(self,input):
         if isinstance(input,str):

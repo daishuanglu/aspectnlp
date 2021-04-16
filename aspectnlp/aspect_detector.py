@@ -89,7 +89,7 @@ def find_phrase(word,keyphrases):
 
 
 class aspectDetector():
-    def __init__(self,ftmodel_path=None,sent_len=200):
+    def __init__(self,ftmodel_path='',sent_len=200):
         self.max_sent_len = sent_len
         import aspectnlp
         rmls_nlp_dir = os.path.dirname(aspectnlp.__file__)
@@ -116,17 +116,16 @@ class aspectDetector():
         self.model=None
         self._load_embeddings_and_model(ftmodel_path)
 
-    def _load_embeddings_and_model(self,ftmodel_path=None):
+    def _load_embeddings_and_model(self,ftmodel_path):
         with io.open(os.path.join(self.prep_dir, 'word_idx.json')) as f:
             self.prev_word = json.load(f)
-        if ftmodel_path is None:
-            ftmodel_path=os.path.join(self.emb_dir, self.domain_emb + ".bin")
-            try:
-                self.ftmodel=load_model(ftmodel_path)
-            except:
-                print("Embedding not found! please add your fasttext embedding OR \n  Download our custom model from https://drive.google.com/u/0/uc?export=download&confirm=HYUN&id=1mQPKHoa4SQr-skCO5XpzWpOxGB5z02-U")
+
+        if not ftmodel_path:
+            self.ftmodel = load_pretrained_embedding()
         else:
-            self.ftmodel = load_model(ftmodel_path)
+            self.ftmodel=load_model(ftmodel_path)
+        assert (self.ftmodel is None)
+
         self.embedding_gen = np.load(os.path.join(self.prep_dir, "gen.vec.npy"))
         self.embedding_domain = np.load(os.path.join(self.prep_dir, self.domain+'_emb.vec.npy'))
 
