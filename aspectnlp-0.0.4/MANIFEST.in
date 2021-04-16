@@ -1,0 +1,19 @@
+include README.md
+include misc.py
+include mydatasets.py
+include LICSENCE
+
+include aspectnlp/*
+include aspectnlp/absa_model/custom
+include aspectnlp/absa_model/custom_info.pkl
+include aspectnlp/absa_prep/custom_emb.vec.npy
+include aspectnlp/absa_prep/gen.vec.npy
+include aspectnlp/absa_prep/word_idx.json
+include aspectnlp/embeddings/glove_words_compressed.npy
+
+recursive-include aspectnlp/models *
+recursive-include tests *
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+
+recursive-include docs *.rst conf.py Makefile make.bat *.jpg *.png *.gif

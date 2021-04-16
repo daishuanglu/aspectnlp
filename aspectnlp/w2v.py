@@ -5,7 +5,7 @@ import linecache
 import gensim
 import numpy as np
 from fasttext import load_model
-from utils import load_pretrained_embedding
+from aspectnlp.utils import load_pretrained_embedding
 
 class fasttext_emb():
 
