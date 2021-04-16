@@ -124,7 +124,7 @@ class aspectDetector():
             self.ftmodel = load_pretrained_embedding()
         else:
             self.ftmodel=load_model(ftmodel_path)
-        assert (self.ftmodel is None)
+        assert (self.ftmodel is not None)
 
         self.embedding_gen = np.load(os.path.join(self.prep_dir, "gen.vec.npy"))
         self.embedding_domain = np.load(os.path.join(self.prep_dir, self.domain+'_emb.vec.npy'))

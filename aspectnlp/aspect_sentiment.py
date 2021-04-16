@@ -35,7 +35,7 @@ class AspectSentimentScorer():
             ftmodel = load_pretrained_embedding()
         else:
             ftmodel=load_model(ftmodel_path)
-        assert(ftmodel is None)
+        assert(ftmodel is not None)
 
         if absa=='aspect':
             print("Loading pre-trained aspect embedding...")
